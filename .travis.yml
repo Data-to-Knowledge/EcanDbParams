@@ -23,7 +23,7 @@ install:
   - conda list
 
 script:
-  - py.test EcanDbParams --cov EcanDbParams -v --cov-report term-missing
+  - py.test ecandbparams --cov ecandbparams -v --cov-report term-missing
 
 after_success:
   - codecov

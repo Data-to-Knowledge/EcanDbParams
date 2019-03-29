@@ -8,10 +8,10 @@ Created on Mon Sep 25 11:10:04 2017
 #################################################################
 ### Helper functions
 
-
 def _get_vars(dict1):
     v1 = [i for i in dict1 if '__' not in i]
     return v1
+
 
 ##################################################################
 ### Class dictionary containers
@@ -54,7 +54,7 @@ class GIS(object):
     catch_grp_gis = {'server': 'SQL2012PROD05', 'database': 'GISPUBLIC', 'table': 'SWATER_NZTM_CATCHMENT_GROUPS', 'col_names': ['CatchmentGroup', 'CatchmentGroupName'], 'rename_cols': ['catch_grp', 'catch_grp_name'], 'geo_col': True}
     cwms_gis = {'server': 'SQL2012PROD05', 'database': 'GIS', 'table': 'CWMS_NZTM_ZONES', 'col_names': ['ZONE_NAME'], 'rename_cols': ['cwms'], 'geo_col': True}
     crc_gis = {'server': 'SQL2012PROD05', 'database': 'GIS_Accela', 'table': 'vCOCOA_NZTM_ResourceConsents', 'col_names': ['ConsentNo', 'ConsentType', 'NZTMX', 'NZTMY'], 'rename_cols': ['crc', 'crc_type', 'NZTMX', 'NZTMY'], 'geo_col': True}
-    rec_gis = {'server': 'SQL2012PROD05', 'database': 'GIS', 'table': 'MFE_NZTM_REC', 'col_names': ['NZREACH', 'NZFNODE', 'NZTNODE', 'ORDER_'], 'rename_cols': ['NZREACH', 'NZFNODE', 'NZTNODE', 'order'], 'geo_col': True}
+    rec_rivers_gis = {'server': 'SQL2012PROD05', 'database': 'GIS', 'table': 'MFE_NZTM_REC', 'col_names': ['NZREACH', 'NZFNODE', 'NZTNODE', 'ORDER_'], 'rename_cols': ['NZREACH', 'NZFNODE', 'NZTNODE', 'order'], 'geo_col': True}
     rec_catch_gis = {'server': 'SQL2012PROD05', 'database': 'GIS', 'table': 'MFE_NZTM_RECWATERSHEDCANTERBURY', 'col_names': ['NZREACH'], 'geo_col': True}
 
 
@@ -83,8 +83,6 @@ class sql_arg(object):
     """
     Class container to retreive dictionaries to pass to rd_sql.
     """
-    from core.ecan_io.SQL_databases.sql_arg_class import _get_vars, consents, water_use, GW, SW, GIS, lowflows
-
     _code_dict = {'consents': consents, 'water_use': water_use, 'GW': GW, 'lowflows': lowflows, 'SW': SW, 'GIS': GIS}
 
     def __init__(self):
@@ -98,15 +96,23 @@ class sql_arg(object):
         """
         Main function to retreive dictionaries to pass to rd_sql.
 
-        Arguments:
-        code -- Special dictionary code to retreive the dictionary parameters for SQL (str).\n
-        fields -- The dictionary keys that should be retreived (str or list). None returns all fields.\n
-        minimum -- Should only the server, database, and table values be returned?
+        Parameters
+        ----------
+        code : str
+            Special code to retreive the dictionary parameters for SQL.
+        fields : str or list of str
+            The dictionary keys that should be retreived (str or list). None returns all fields.
+        minimum : bool
+            Should only the server, database, and table values be returned?
+
+        Returns
+        -------
+        dict
         """
         if isinstance(code, str):
             if code in self.codes:
                 class1 = [i for i in self.classes if code in self.classes[i]][0]
-                class2 = getattr(self, class1)
+                class2 = self._code_dict[class1]
                 dict1 = getattr(class2, code)
                 if fields is not None:
                     if isinstance(fields, str):
@@ -117,42 +123,8 @@ class sql_arg(object):
                     fields = ['server', 'database', 'table']
                     dict1 = {i: dict1[i] for i in fields if i in dict1.keys()}
 
-                return(dict1.copy())
+                return dict1.copy()
 
     def __repr__(self):
-        return(repr(self.classes))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        return repr(self.classes)
 
