@@ -10,7 +10,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 name = 'EcanDbParams'
 main_package = 'ecandbparams'
 # datasets = 'datasets'
-version = '0.0.1'
+version = '0.0.2'
 descrip = 'Functions to get the internal sql db parameters for pdsql'
 
 # The below code is for readthedocs. To have sphinx/readthedocs interact with

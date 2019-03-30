@@ -62,7 +62,7 @@ class lowflows(object):
     """
     Tables in the LowFlows database.
     """
-    lowflow_restr_day = {'server': 'SQL2012PROD03', 'database': 'LowFlows', 'table': 'LowFlowSiteRestrictionDaily', 'col_names': ['SiteID', 'RestrictionDate', 'BandNo', 'BandAllocation'], 'rename_cols': ['lowflow_id', 'date', 'band', 'band_restr'], 'where_col': {'SnapshotType': ['Live']}}
+    lowflow_restr_day = {'server': 'SQL2012PROD03', 'database': 'LowFlows', 'table': 'LowFlowSiteRestrictionDaily', 'col_names': ['SiteID', 'RestrictionDate', 'BandNo', 'BandAllocation'], 'rename_cols': ['lowflow_id', 'date', 'band', 'band_restr'], 'where_in': {'SnapshotType': ['Live']}}
     lowflow_restr_type = {'server': 'SQL2012PROD03', 'database': 'LowFlows', 'table': 'LowFlowSiteBandPeriodAllocation', 'col_names': ['SiteID', 'BandNo', 'PeriodNo', 'Allocation', 'Flow'], 'rename_cols': ['lowflow_id', 'band', 'mon', 'allo', 'min_flow']}
     lowflow_band_crc = {'server': 'SQL2012PROD03', 'database': 'LowFlows', 'table': 'vLowFlowConsents2', 'col_names': ['SiteID', 'BandNo', 'RecordNo', 'isCurrent'], 'rename_cols': ['lowflow_id', 'band', 'crc', 'active']}
     lowflow_gauge = {'server': 'SQL2012PROD03', 'database': 'LowFlows', 'table': 'LowFlowSite', 'col_names': ['SiteID', 'RefDBase', 'RefDBaseKey', 'isActive'], 'rename_cols': ['lowflow_id', 'DB', 'site', 'active']}
