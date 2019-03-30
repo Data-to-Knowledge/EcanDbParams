@@ -1,6 +1,6 @@
 {% set name = "EcanDbParams" %}
-{% set version = "0.0.1" %}
-{% set sha256 = "d23522adcd7b43858427f777430552f9c248d0b6b7099e1b5245f4d4a7b10e21" %}
+{% set version = "0.0.2" %}
+{% set sha256 = "1fbe1dad5cc01ff1d0db773f7b3a8040cbff7a0909204c8b869f1af212702fbf" %}
 
 # sha256 is the prefered checksum -- you can get it for a file with:
 #  `openssl sha256 <file name>`.
