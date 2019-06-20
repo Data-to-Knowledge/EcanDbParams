@@ -21,7 +21,7 @@ class consents(object):
     """
     Consents data.
     """
-    crc_dates = {'server': 'SQL2012PROD03', 'database': 'DataWarehouse', 'table': 'F_ACC_Permit', 'col_names': ['B1_ALT_ID', 'fmDate', 'toDate', 'Longitude', 'Latitude', 'StatusType', 'B1_APPL_STATUS'], 'rename_cols': ['crc', 'from_date', 'to_date', 'wgs84_x', 'wgs84_y', 'status', 'status_details']}
+    crc_dates = {'server': 'SQL2012PROD03', 'database': 'DataWarehouse', 'table': 'F_ACC_Permit', 'col_names': ['B1_ALT_ID', 'fmDate', 'toDate', 'Longitude', 'Latitude', 'StatusType', 'B1_APPL_STATUS'], 'rename_cols': ['crc', 'from_date', 'to_date', 'lon', 'lat', 'status', 'status_details']}
     crc_relation = {'server': 'SQL2012PROD03', 'database': 'DataWarehouse', 'table': 'D_ACC_Relationships', 'col_names': ['ParentRecordNo', 'ChildRecordNo'], 'rename_cols': ['crc', 'crc_child']}
     crc_wap_allo = {'server': 'SQL2012PROD03', 'database': 'DataWarehouse', 'table': 'D_ACC_Act_Water_TakeWaterWAPAlloc', 'col_names': ['RecordNo', 'Activity', 'Allocation Block', 'ROW_INDEX', 'WAP', 'Max Rate for WAP (l/s)', 'Max Rate Pro Rata (l/s)', 'Max Vol Pro Rata (m3)', 'Consecutive Day Period', 'Include in SW Allocation?', 'First Stream Depletion Rate', 'From Month'], 'rename_cols': ['crc', 'take_type', 'allo_block', 'row_index', 'wap', 'max_rate_wap', 'max_rate', 'max_vol', 'return_period', 'in_sw_allo', 'sd', 'from_month']}
     crc_cav = {'server': 'SQL2012PROD03', 'database': 'DataWarehouse', 'table': 'D_ACC_Act_Water_TakeWaterConsent', 'col_names': ['RecordNo', 'Activity', 'Consented Annual Volume (m3/year)', 'Has a low flow restriction condition?'], 'rename_cols': ['crc', 'take_type', 'cav', 'min_flow']}
